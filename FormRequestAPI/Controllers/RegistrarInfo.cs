@@ -28,11 +28,11 @@ namespace FormRequestAPI.Controllers
                 return Unauthorized("Invalid login credentials.");
             }
 
-            // If credentials are correct, return the registrar's info
+            // If credentials are correct, return the registrars info
             return Ok(registrarInfo);
         }
 
-        // Define a simple LoginRequest DTO (Data Transfer Object)
+       
         public class LoginRequest
         {
             public required string IdNumber { get; set; }

@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using FormRequestAPI.Data;
-using FormRequestAPI.Hubs; // Add this using directive for the SignalR Hub
+using FormRequestAPI.Hubs; 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 
 // Configure the DbContext to use SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -12,7 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 );
 
 // Add SignalR to the service container
-builder.Services.AddSignalR(); // This line adds SignalR
+builder.Services.AddSignalR(); 
 
 builder.Services.AddControllers();
 
@@ -22,7 +22,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -31,7 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Enable authorization middleware (if applicable)
+
 app.UseAuthorization();
 
 // Map controllers to routes

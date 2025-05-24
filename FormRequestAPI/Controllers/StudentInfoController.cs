@@ -23,7 +23,7 @@ namespace FormRequestAPI.Controllers
             return await _context.StudentInfo.ToListAsync();
         }
 
-        // GET: api/StudentInfo/{idNumber} - Changed to use IdNumber instead of Id
+        // GET: api/StudentInfo/{idNumber} 
         [HttpGet("{idNumber}")]
         public async Task<ActionResult<StudentInfo>> GetStudentInfo(string idNumber)
         {
@@ -46,14 +46,14 @@ namespace FormRequestAPI.Controllers
             _context.StudentInfo.Add(studentInfo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStudentInfo", new { idNumber = studentInfo.IdNumber }, studentInfo); // Return IdNumber instead of Id
+            return CreatedAtAction("GetStudentInfo", new { idNumber = studentInfo.IdNumber }, studentInfo); 
         }
 
         // PUT: api/StudentInfo/{idNumber}
         [HttpPut("{idNumber}")]
         public async Task<IActionResult> PutStudentInfo(string idNumber, StudentInfo studentInfo)
         {
-            if (idNumber != studentInfo.IdNumber) // Check against IdNumber
+            if (idNumber != studentInfo.IdNumber) 
             {
                 return BadRequest();
             }
@@ -96,10 +96,10 @@ namespace FormRequestAPI.Controllers
             return NoContent();
         }
 
-        // Helper method to check if student exists by IdNumber
+        // check if student exists by IdNumber
         private bool StudentInfoExists(string idNumber)
         {
-            return _context.StudentInfo.Any(e => e.IdNumber == idNumber); // Check by IdNumber
+            return _context.StudentInfo.Any(e => e.IdNumber == idNumber); 
         }
     }
 }
