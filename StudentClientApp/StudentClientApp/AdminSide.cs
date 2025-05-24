@@ -100,7 +100,7 @@ namespace StudentClientApp
                             }
                             else if (status == "Claimed")
                             {
-                                row.Cells["Action"].Value = ""; // Already done, no action
+                                row.Cells["Action"].Value = ""; // tite
                             }
                             else
                             {
