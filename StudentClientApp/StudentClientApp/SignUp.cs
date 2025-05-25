@@ -14,11 +14,14 @@ namespace StudentClientApp
         {
             InitializeComponent();
             IdNumberBox2.TextChanged += IdNumberBox2_TextChanged;
+            FullNameBox.KeyDown += FullNameBox_KeyDown;
+            IdNumberBox2.KeyDown += IdNumberBox2_KeyDown;
+            PasswordBox2.KeyDown += PasswordBox2_KeyDown;
         }
 
         private void SignUp_Load(object sender, EventArgs e)
         {
-            // You can add any setup code here if needed when the form loads
+            
         }
 
         private async void SignUpBtn_Click(object sender, EventArgs e)
@@ -107,6 +110,30 @@ namespace StudentClientApp
                 IdNumberBox2.SelectionStart = IdNumberBox2.Text.Length;
             }
 
+        }
+        private void FullNameBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                IdNumberBox2.Focus();
+            }
+        }
+        private void IdNumberBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                PasswordBox2.Focus();
+            }
+        }
+        private void PasswordBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                SignUpBtn.PerformClick();
+            }
         }
     }
 

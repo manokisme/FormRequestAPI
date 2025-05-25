@@ -14,6 +14,8 @@ namespace StudentClientApp
         {
             InitializeComponent();
             IdNumberBox.TextChanged += IdNumberBox_TextChanged;
+            IdNumberBox.KeyDown += IdNumberBox_KeyDown;
+            PasswordBox.KeyDown += PasswordBox_KeyDown;
             PasswordBox.PasswordChar = '*';
             //ShowPasswordCheckBox.CheckedChanged += ShowPasswordCheckBox_CheckedChanged;
         }
@@ -45,8 +47,24 @@ namespace StudentClientApp
                 IdNumberBox.SelectionStart = IdNumberBox.Text.Length;
             }
         }
+        private void IdNumberBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                PasswordBox.Focus();
+            }
+        }
+        private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                SignInBtn.PerformClick();
+            }
+        }
 
-        
+
         private async void SignInBtn_Click(object sender, EventArgs e)
         {
             string idNumber = IdNumberBox.Text.Trim();
