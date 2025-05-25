@@ -28,7 +28,7 @@ namespace StudentClientApp
         private async void AdminSide_Load(object sender, EventArgs e)
         {
             _hubConnection = new HubConnectionBuilder()
-       .WithUrl("https://c34b-160-25-95-134.ngrok-free.app/requesthub") // to match SignalR route
+       .WithUrl("https://formerly-central-spider.ngrok-free.app/requesthub") // to match SignalR route
        .WithAutomaticReconnect()
        .Build();
 
@@ -52,7 +52,7 @@ namespace StudentClientApp
         }
         private async Task LoadRequestsAsync()
         {
-            string apiUrl = "https://c34b-160-25-95-134.ngrok-free.app/api/RequestInfo";
+            string apiUrl = "https://formerly-central-spider.ngrok-free.app/api/RequestInfo";
 
             using (HttpClient client = new HttpClient())
             {
@@ -142,7 +142,7 @@ namespace StudentClientApp
                         return; 
                     }
 
-                    string apiUrl = "https://c34b-160-25-95-134.ngrok-free.app/api/Request/updateStatus";
+                    string apiUrl = "https://formerly-central-spider.ngrok-free.app/api/Request/updateStatus";
                     var update = new
                     {
                         StudentId = studentId,
@@ -158,7 +158,7 @@ namespace StudentClientApp
                         if (response.IsSuccessStatusCode)
                         {
                             MessageBox.Show($"Status updated to {nextStatus}.");
-                            await LoadRequestsAsync(); // Refresh table to reflect change
+                            await LoadRequestsAsync(); // Refresh table 
                         }
                         else
                         {

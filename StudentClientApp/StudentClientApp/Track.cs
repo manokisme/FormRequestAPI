@@ -45,7 +45,7 @@ namespace StudentClientApp
 
             // Connect to SignalR
             connection = new HubConnectionBuilder()
-                .WithUrl("https://c34b-160-25-95-134.ngrok-free.app/requestHub")
+                .WithUrl("https://formerly-central-spider.ngrok-free.app/requestHub")
                 .WithAutomaticReconnect()
                 .Build();
 
@@ -123,7 +123,7 @@ namespace StudentClientApp
         }
         private async Task FetchAndUpdateStatusAsync()
         {
-            string apiUrl = "https://c34b-160-25-95-134.ngrok-free.app/api/RequestInfo"; // Adjust all url kapag nire-run ngrok
+            string apiUrl = "https://formerly-central-spider.ngrok-free.app/api/RequestInfo"; // Adjust all url kapag nire-run ngrok
             using (HttpClient client = new HttpClient())
             {
                 try

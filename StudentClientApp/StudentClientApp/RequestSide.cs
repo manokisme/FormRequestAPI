@@ -144,7 +144,7 @@ namespace StudentClientApp
 
             try
             {
-                string apiUrl = "https://c34b-160-25-95-134.ngrok-free.app/api/RequestInfo"; // URL of API
+                string apiUrl = "https://formerly-central-spider.ngrok-free.app/api/RequestInfo"; // URL of API
 
                 using (HttpClient client = new HttpClient())
                 {

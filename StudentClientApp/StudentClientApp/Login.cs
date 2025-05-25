@@ -59,7 +59,7 @@ namespace StudentClientApp
             }
 
             // local API URL
-            string apiBaseUrl = "https://c34b-160-25-95-134.ngrok-free.app/api/";
+            string apiBaseUrl = "https://formerly-central-spider.ngrok-free.app/api/";
             bool loginSuccess = false;
 
 
