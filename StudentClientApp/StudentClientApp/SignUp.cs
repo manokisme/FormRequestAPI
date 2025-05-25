@@ -111,6 +111,7 @@ namespace StudentClientApp
             }
 
         }
+        // enter key
         private void FullNameBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
