@@ -53,10 +53,17 @@ namespace StudentClientApp
             {
                 if (studentId == currentStudentId)
                 {
-                    this.Invoke(new MethodInvoker(() =>
+                    if (this.InvokeRequired)
                     {
-                        UpdateTracking(status); // Use the status passed by SignalR
-                    }));
+                        this.BeginInvoke(new MethodInvoker(() =>
+                        {
+                            UpdateTracking(status);
+                        }));
+                    }
+                    else
+                    {
+                        UpdateTracking(status);
+                    }
                 }
             });
 
@@ -138,10 +145,17 @@ namespace StudentClientApp
                         if (myRequest != null)
                         {
                             string status = myRequest.Status;
-                            this.Invoke(new MethodInvoker(() =>
+                            if (this.InvokeRequired)
+                            {
+                                this.BeginInvoke(new MethodInvoker(() =>
+                                {
+                                    UpdateTracking(status);
+                                }));
+                            }
+                            else
                             {
                                 UpdateTracking(status);
-                            }));
+                            }
                         }
                     }
                     else
@@ -164,7 +178,9 @@ namespace StudentClientApp
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            StudentSide dashboard = new StudentSide(currentStudentId);
+            dashboard.Show();
+            this.Close();
         }
 
         private void DashboardBtn_Click(object sender, EventArgs e)

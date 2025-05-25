@@ -235,7 +235,9 @@ namespace StudentClientApp
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            StudentSide dashboard = new StudentSide(currentStudentId);
+            dashboard.Show();
+            this.Close();
         }
 
         private void DashboardBtn_Click(object sender, EventArgs e)

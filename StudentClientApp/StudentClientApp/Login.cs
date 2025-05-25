@@ -69,6 +69,7 @@ namespace StudentClientApp
         {
             string idNumber = IdNumberBox.Text.Trim();
             string password = PasswordBox.Text.Trim();
+            SignInBtn.Enabled = false;
 
             if (string.IsNullOrEmpty(idNumber) || string.IsNullOrEmpty(password))
             {
@@ -80,7 +81,7 @@ namespace StudentClientApp
             string apiBaseUrl = "https://formerly-central-spider.ngrok-free.app/api/";
             bool loginSuccess = false;
 
-
+            //for student
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -99,13 +100,14 @@ namespace StudentClientApp
                             MessageBox.Show("Login successful!");
                             StudentSide studentForm = new StudentSide(student.IdNumber);
                             studentForm.Show();
-                            this.Hide();
+                            this.Close();
                             loginSuccess = true;
                             return;
                         }
                         else if (student != null)
                         {
                             MessageBox.Show("Incorrect password. Please try again.");
+                            SignInBtn.Enabled = true;
                             return;
                         }
                     }   
@@ -114,9 +116,11 @@ namespace StudentClientApp
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while connecting to the API: " + ex.Message);
+                SignInBtn.Enabled = true;
+
             }
 
-
+            //for registrar
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -140,8 +144,7 @@ namespace StudentClientApp
                             MessageBox.Show("Login successful!");
                             AdminSide adminForm = new AdminSide(); // Navigate to AdminSide
                             adminForm.Show();
-                            this.Hide();
-                            this.Hide();
+                            this.Close();
                             loginSuccess = true;
                             return;
                         }
@@ -153,12 +156,16 @@ namespace StudentClientApp
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while connecting to the API: " + ex.Message);
+                SignInBtn.Enabled = true;
+
             }
 
             //condition if neither student nor registrar is incorrect
             if (!loginSuccess)
             {
                 MessageBox.Show("ID not found or invalid credentials. Please try again.");
+                SignInBtn.Enabled = true;
+
             }
 
         }

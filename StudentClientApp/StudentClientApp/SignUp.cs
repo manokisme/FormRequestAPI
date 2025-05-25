@@ -77,7 +77,7 @@ namespace StudentClientApp
                         MessageBox.Show("Account created successfully!");
                         Login loginForm = new Login();
                         loginForm.Show();
-                        this.Hide();
+                        this.Close();
                     }
                     else
                     {

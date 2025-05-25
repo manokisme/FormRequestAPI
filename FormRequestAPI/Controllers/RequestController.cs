@@ -56,7 +56,7 @@ namespace FormRequestAPI.Controllers
         public async Task<IActionResult> UpdateStatus([FromBody] StatusUpdateRequest request)
         {
             var requestInfo = await _context.RequestInfo
-                .FirstOrDefaultAsync(r => r.StudentId == request.StudentId);
+                .FirstOrDefaultAsync(r => r.Id == request.Id);
 
             if (requestInfo == null)
             {
@@ -67,7 +67,7 @@ namespace FormRequestAPI.Controllers
             await _context.SaveChangesAsync();
 
             // Use SignalR to notify all connected clients about the status update
-            await _hubContext.Clients.All.SendAsync("ReceiveStatusUpdate", request.StudentId, request.Status);
+            await _hubContext.Clients.All.SendAsync("ReceiveStatusUpdate", requestInfo.StudentId, request.Status);
 
             return Ok("Status updated and notification sent.");
         }
@@ -76,7 +76,7 @@ namespace FormRequestAPI.Controllers
 
     public class StatusUpdateRequest
     {
-        public string? StudentId { get; set; }
+        public int Id { get; set; }
         public string? Status { get; set; }
     }
 }

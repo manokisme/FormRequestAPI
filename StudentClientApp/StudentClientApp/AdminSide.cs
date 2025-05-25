@@ -64,6 +64,11 @@ namespace StudentClientApp
                         string json = await response.Content.ReadAsStringAsync();
                         var requestList = JsonConvert.DeserializeObject<List<RequestInfo>>(json);
 
+                        var sortedList = requestList
+                            .OrderBy(r => r.Status == "Claimed" ? 1 : 0) // Claimed go last
+                            .ToList();
+
+
                         var displayList = requestList.Select(r => new
                         {
                             r.Id,
@@ -94,17 +99,40 @@ namespace StudentClientApp
                         {
                             string status = row.Cells["Status"].Value?.ToString();
 
+                            var buttonCell = (DataGridViewButtonCell)row.Cells["Action"];
+
                             if (status == "Approved")
                             {
-                                row.Cells["Action"].Value = "Ready to Claim";
+                                buttonCell.Value = "Ready to Claim";
+                                buttonCell.ReadOnly = false;
+                                buttonCell.FlatStyle = FlatStyle.Standard;
+                                buttonCell.Style.ForeColor = Color.Black;
+                            }
+                            else if (status == "Ready to Claim")
+                            {
+                                // Hide the button: no text, disable clicking
+                                buttonCell.Value = "";
+                                buttonCell.ReadOnly = true;
+                                buttonCell.FlatStyle = FlatStyle.Flat;
+                                buttonCell.Style.ForeColor = Color.Transparent;
+                                buttonCell.Style.SelectionForeColor = Color.Transparent;
                             }
                             else if (status == "Claimed")
                             {
-                                row.Cells["Action"].Value = ""; // Already done, no action
+                                // Also hide for claimed
+                                buttonCell.Value = "";
+                                buttonCell.ReadOnly = true;
+                                buttonCell.FlatStyle = FlatStyle.Flat;
+                                buttonCell.Style.ForeColor = Color.Transparent;
+                                buttonCell.Style.SelectionForeColor = Color.Transparent;
                             }
                             else
                             {
-                                row.Cells["Action"].Value = "Accept";
+                                // For Pending or others, show "Accept"
+                                buttonCell.Value = "Accept";
+                                buttonCell.ReadOnly = false;
+                                buttonCell.FlatStyle = FlatStyle.Standard;
+                                buttonCell.Style.ForeColor = Color.Black;
                             }
                         }
                     }
@@ -125,7 +153,7 @@ namespace StudentClientApp
             {
                 try
                 {
-                    string studentId = DataAdmin.Rows[e.RowIndex].Cells["StudentId"].Value.ToString();
+                    int requestId = Convert.ToInt32(DataAdmin.Rows[e.RowIndex].Cells["Id"].Value);
                     string currentStatus = DataAdmin.Rows[e.RowIndex].Cells["Status"].Value?.ToString();
                     string nextStatus = "";
 
@@ -145,7 +173,7 @@ namespace StudentClientApp
                     string apiUrl = "https://formerly-central-spider.ngrok-free.app/api/Request/updateStatus";
                     var update = new
                     {
-                        StudentId = studentId,
+                        Id = requestId,
                         Status = nextStatus
                     };
 
