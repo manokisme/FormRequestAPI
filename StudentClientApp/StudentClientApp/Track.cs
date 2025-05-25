@@ -41,7 +41,7 @@ namespace StudentClientApp
             circleApproved.BackColor = Color.Gray;
             circleReady.BackColor = Color.Gray;
 
-            await FetchAndUpdateStatusAsync(); // << fetch initial status from API
+            await FetchAndUpdateStatusAsync(); // fetch initial status from API
 
             // Connect to SignalR
             connection = new HubConnectionBuilder()

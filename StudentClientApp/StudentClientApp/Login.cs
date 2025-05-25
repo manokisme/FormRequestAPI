@@ -100,7 +100,7 @@ namespace StudentClientApp
                             MessageBox.Show("Login successful!");
                             StudentSide studentForm = new StudentSide(student.IdNumber);
                             studentForm.Show();
-                            this.Close();
+                            this.Hide();
                             loginSuccess = true;
                             return;
                         }
@@ -144,7 +144,7 @@ namespace StudentClientApp
                             MessageBox.Show("Login successful!");
                             AdminSide adminForm = new AdminSide(); // Navigate to AdminSide
                             adminForm.Show();
-                            this.Close();
+                            this.Hide();
                             loginSuccess = true;
                             return;
                         }

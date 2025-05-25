@@ -106,7 +106,7 @@ namespace StudentClientApp
             {
                 // Remove the last non-digit character
                 IdNumberBox2.Text = new string(input.Where(c => char.IsDigit(c)).ToArray());
-                // Move the cursor to the end
+                
                 IdNumberBox2.SelectionStart = IdNumberBox2.Text.Length;
             }
 
