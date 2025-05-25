@@ -53,8 +53,66 @@ namespace StudentClientApp
                 "Gcash",
                 "Pay at the cashier"
             });
+            // Enter key: FullName → Age
+            FullNameBox.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    AgeBox.Focus();
+                }
+            };
+
+            // Enter key: Age → Address, with age range check
+            AgeBox.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    if (int.TryParse(AgeBox.Text.Trim(), out int age))
+                    {
+                        if (age >= 16 && age <= 100)
+                        {
+                            AddBox.Focus();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Age must be between 16 and above.");
+                            AgeBox.Focus();
+                            AgeBox.SelectAll();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid age.");
+                        AgeBox.Focus();
+                        AgeBox.SelectAll();
+                    }
+                }
+            };
+
+            
+            AddBox.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    ProgramBox.Focus();
+                }
+            };
+
+           
+            ProgramBox.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    DocTypeBox.Focus();
+                }
+            };
+
         }
-        
+
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -128,6 +186,11 @@ namespace StudentClientApp
                 MessageBox.Show("Age must be a valid number.");
                 return;
             }
+            if (!Agreement.Checked)
+            {
+                MessageBox.Show("You must agree to the terms before submitting the request.");
+                return;
+            }
 
             var request = new RequestInfo
             {
@@ -180,6 +243,15 @@ namespace StudentClientApp
             StudentSide dashboard = new StudentSide(currentStudentId); 
             dashboard.Show();                        
             this.Close();
+        }
+
+        private void Agreement_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!Agreement.Checked)
+            {
+                MessageBox.Show("Please agree to the terms before submitting the request.");
+            }
+
         }
     }
     /*public class RequestInfo
