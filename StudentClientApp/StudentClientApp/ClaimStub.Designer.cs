@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClaimStub));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ExtBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblFormRequested = new System.Windows.Forms.Label();
             this.lblStudentId = new System.Windows.Forms.Label();
             this.lblClaimedDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ExtBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(381, 47);
             this.panel1.TabIndex = 1;
+            // 
+            // ExtBtn
+            // 
+            this.ExtBtn.BackColor = System.Drawing.Color.White;
+            this.ExtBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.ExtBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExtBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtBtn.ForeColor = System.Drawing.Color.Teal;
+            this.ExtBtn.Location = new System.Drawing.Point(341, 0);
+            this.ExtBtn.Name = "ExtBtn";
+            this.ExtBtn.Size = new System.Drawing.Size(40, 32);
+            this.ExtBtn.TabIndex = 30;
+            this.ExtBtn.Text = "X";
+            this.ExtBtn.UseVisualStyleBackColor = false;
+            this.ExtBtn.Click += new System.EventHandler(this.ExtBtn_Click);
             // 
             // ExitBtn
             // 
@@ -115,21 +131,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Claim Slip";
             // 
-            // ExtBtn
-            // 
-            this.ExtBtn.BackColor = System.Drawing.Color.White;
-            this.ExtBtn.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.ExtBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExtBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExtBtn.ForeColor = System.Drawing.Color.Teal;
-            this.ExtBtn.Location = new System.Drawing.Point(341, 0);
-            this.ExtBtn.Name = "ExtBtn";
-            this.ExtBtn.Size = new System.Drawing.Size(40, 32);
-            this.ExtBtn.TabIndex = 30;
-            this.ExtBtn.Text = "X";
-            this.ExtBtn.UseVisualStyleBackColor = false;
-            this.ExtBtn.Click += new System.EventHandler(this.ExtBtn_Click);
-            // 
             // ClaimStub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +143,7 @@
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClaimStub";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClaimStub";

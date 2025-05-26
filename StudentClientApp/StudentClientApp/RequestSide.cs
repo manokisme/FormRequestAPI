@@ -186,6 +186,11 @@ namespace StudentClientApp
                 MessageBox.Show("Age must be a valid number.");
                 return;
             }
+            else if (age < 16 || age > 100)
+            {
+                MessageBox.Show("Age must be 16 and above.");
+                return;
+            }
             if (!Agreement.Checked)
             {
                 MessageBox.Show("You must agree to the terms before submitting the request.");
@@ -219,7 +224,9 @@ namespace StudentClientApp
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Request submitted successfully!");
-                        this.Close(); 
+                        StudentSide dashboard = new StudentSide(currentStudentId);
+                        dashboard.Show();
+                        this.Close();
                     }
                     else
                     {
@@ -253,6 +260,11 @@ namespace StudentClientApp
             {
                 MessageBox.Show("Please agree to the terms before submitting the request.");
             }
+
+        }
+
+        private void RequestSide_Load(object sender, EventArgs e)
+        {
 
         }
     }

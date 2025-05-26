@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminSide));
             this.panel1 = new System.Windows.Forms.Panel();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
@@ -85,7 +86,7 @@
             this.DataAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataAdmin.Location = new System.Drawing.Point(0, 74);
             this.DataAdmin.Name = "DataAdmin";
-            this.DataAdmin.Size = new System.Drawing.Size(1206, 657);
+            this.DataAdmin.Size = new System.Drawing.Size(1175, 657);
             this.DataAdmin.TabIndex = 2;
             this.DataAdmin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -103,6 +104,7 @@
             this.Controls.Add(this.DataAdmin);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminSide";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminSide";

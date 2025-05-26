@@ -23,6 +23,7 @@ namespace StudentClientApp
         {
             InitializeComponent();
            DataAdmin.CellClick += DataAdmin_CellClick;
+
         }
 
         private async void AdminSide_Load(object sender, EventArgs e)
@@ -203,7 +204,9 @@ namespace StudentClientApp
        
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide(); 
+            Login loginForm = new Login();
+            loginForm.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -219,7 +222,7 @@ namespace StudentClientApp
 
         private async void refreshTimer_Tick(object sender, EventArgs e)
         {
-            await LoadRequestsAsync();
+           // await LoadRequestsAsync();
         }
     }
 

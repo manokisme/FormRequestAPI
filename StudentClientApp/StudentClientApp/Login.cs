@@ -184,6 +184,11 @@ namespace StudentClientApp
         {
             PasswordBox.PasswordChar = ShowPasswordCheckBox.Checked ? '\0' : '*';
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // Helper class to represent the student
