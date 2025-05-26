@@ -1,0 +1,5 @@
+﻿<configuration>
+	<appSettings>
+		<add key="ApiBaseUrl" value="https://a7c0-160-25-95-134.ngrok-free.app/api/" />
+	</appSettings>
+</configuration>

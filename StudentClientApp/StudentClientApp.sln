@@ -1,9 +1,9 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentClientApp", "StudentClientApp\StudentClientApp.csproj", "{5B2CE48D-8193-4F66-883F-DCA45F07D6CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentClientApp", "StudentClientApp\StudentClientApp.csproj", "{5B2CE48D-8193-4F66-883F-DCA45F07D6CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
