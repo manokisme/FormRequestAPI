@@ -33,6 +33,7 @@ namespace StudentClientApp
 
         private async void Track_Load(object sender, EventArgs e)
         {
+            //para maging bilog ung mga panel
             MakeCircle(circlePending);
             MakeCircle(circleApproved);
             MakeCircle(circleReady);

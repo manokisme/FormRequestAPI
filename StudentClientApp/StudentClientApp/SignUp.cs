@@ -66,7 +66,7 @@ namespace StudentClientApp
                         return;
                     }
 
-                    // Proceed with registration if ID is not found
+                    // Proceed with registration if ID is not found // in this part magconvert na ung newstudent sa json para magtranfer chuchu
                     string json = JsonConvert.SerializeObject(newStudent);
                     StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 

@@ -29,11 +29,11 @@ namespace StudentClientApp
         private async void AdminSide_Load(object sender, EventArgs e)
         {
             _hubConnection = new HubConnectionBuilder()
-       .WithUrl("https://formerly-central-spider.ngrok-free.app/requesthub") // to match SignalR route
+       .WithUrl("https://formerly-central-spider.ngrok-free.app/requesthub") // to SignalR route
        .WithAutomaticReconnect()
        .Build();
 
-            _hubConnection.On<RequestInfo>("ReceiveNewRequest", async (request) =>
+            _hubConnection.On<RequestInfo>("ReceiveNewRequest", async (request) =>// gumagawa ng connection sa backend /requestHUB
             {
                 Console.WriteLine("SignalR: ReceiveNewRequest received.");
                 await LoadRequestsAsync();
@@ -66,7 +66,7 @@ namespace StudentClientApp
                         var requestList = JsonConvert.DeserializeObject<List<RequestInfo>>(json);
 
                         var sortedList = requestList
-                            .OrderBy(r => r.Status == "Claimed" ? 1 : 0) // Claimed go last
+                            .OrderBy(r => r.Status == "Claimed" ? 1 : 0) // Claimed go last //wala toh unused nd mapagana
                             .ToList();
 
 
@@ -222,7 +222,7 @@ namespace StudentClientApp
 
         private async void refreshTimer_Tick(object sender, EventArgs e)
         {
-           // await LoadRequestsAsync();
+            await LoadRequestsAsync();
         }
     }
 
