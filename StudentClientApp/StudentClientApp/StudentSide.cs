@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentClientApp
@@ -13,13 +7,22 @@ namespace StudentClientApp
     public partial class StudentSide : Form
     {
         private readonly string studentId;
+
         public StudentSide(string id)
         {
             InitializeComponent();
             studentId = id;
+
+
+            RequestBtn.Click -= RequestBtn_Click;
+            TrackBtn.Click -= TrackBtn_Click;
+            Claimbtn.Click -= Claimbtn_Click;
+            ExitBtn.Click -= ExitBtn_Click;
+
             RequestBtn.Click += RequestBtn_Click;
             TrackBtn.Click += TrackBtn_Click;
             Claimbtn.Click += Claimbtn_Click;
+            ExitBtn.Click += ExitBtn_Click;
         }
 
         private void RequestBtn_Click(object sender, EventArgs e)
